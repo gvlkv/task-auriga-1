@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+begin
+    seq 10
+    seq 10
+    seq 10
+end | shuf | ./build/task-auriga-1 algo4 | sort -n
