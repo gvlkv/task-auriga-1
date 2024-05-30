@@ -2,10 +2,13 @@
 #include "algo2.hpp"
 #include "algo3.hpp"
 #include "algo4.hpp"
+#include "algo5.hpp"
 #include "algo6.hpp"
 #include <iostream>
 #include <ranges>
 #include <string_view>
+
+static void read_list(Node<std::string> **out_list);
 
 int main(int argc, char **argv) {
   std::cout << std::boolalpha;
@@ -45,22 +48,41 @@ int main(int argc, char **argv) {
       std::cout << "\n";
     }
   } else if (std::string(argv[1]) == "algo4") {
-    std::string in;
-    Node<std::string> *list = nullptr;
-    for (;;) {
-      std::getline(std::cin, in);
-      auto new_node = new Node<std::string>;
-      new_node->next = list;
-      new_node->value = in;
-      list = new_node;
-      if (in.empty())
-        break;
-    }
+    Node<std::string> *list;
+    read_list(&list);
     remove_duplicates(list);
     display_list(list);
+  } else if (std::string(argv[1]) == "algo5") {
+    Node<std::string> *list1;
+    std::cout << "First list:\n";
+    read_list(&list1);
+    Node<std::string> *list2;
+    std::cout << "Second list:\n";
+    read_list(&list2);
+    const Node<std::string> *found = common_element(list1, list2);
+    if (found) {
+      std::cout << "Common element: " << found->value << ".\n";
+    } else {
+      std::cout << "No common element found.\n";
+    }
   } else if (std::string(argv[1]) == "algo6") {
     std::string in;
     std::cin >> in;
     std::cout << check_brackets(in) << "\n";
   }
+}
+
+static void read_list(Node<std::string> **out_list) {
+  std::string in;
+  Node<std::string> *list = nullptr;
+  for (;;) {
+    std::getline(std::cin, in);
+    if (in.empty())
+      break;
+    auto new_node = new Node<std::string>;
+    new_node->next = list;
+    new_node->value = in;
+    list = new_node;
+  }
+  *out_list = list;
 }

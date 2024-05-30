@@ -8,6 +8,7 @@ add_executable(task-auriga-1
   algo2.cpp
   algo3.cpp
   algo4.cpp
+  algo5.cpp
   algo6.cpp
 )
 target_compile_features(task-auriga-1 PRIVATE cxx_std_23)

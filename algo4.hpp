@@ -1,10 +1,7 @@
+#include "node.hpp"
+
 #include <iostream>
 #include <unordered_set>
-
-template <class T> struct Node {
-  T value;
-  Node<T> *next;
-};
 
 /// Напишите функцию которая убирает дубликаты из несортированного односвязного
 /// списка.
