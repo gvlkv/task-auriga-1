@@ -6,6 +6,7 @@
 #include "algo6.hpp"
 #include "algo7-sort.hpp"
 #include "algo8-binary.hpp"
+#include "algo9.hpp"
 #include <iostream>
 #include <ranges>
 #include <string_view>
@@ -95,6 +96,11 @@ int main(int argc, char **argv) {
     } else {
       std::cout << "not found\n";
     }
+  } else if (std::string(argv[1]) == "algo9") {
+    int rungs{};
+    std::cout << "Enter the number of ladder rungs: ";
+    std::cin >> rungs;
+    std::cout << "There is/are " << number_of_ways(rungs) << " way(s).\n";
   }
 }
 
