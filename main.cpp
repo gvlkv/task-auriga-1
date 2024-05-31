@@ -5,6 +5,7 @@
 #include "algo5.hpp"
 #include "algo6.hpp"
 #include "algo7-sort.hpp"
+#include "algo8-binary.hpp"
 #include <iostream>
 #include <ranges>
 #include <string_view>
@@ -80,6 +81,20 @@ int main(int argc, char **argv) {
       std::cout << e << " ";
     }
     std::cout << "\n";
+  } else if (std::string(argv[1]) == "algo8") {
+    std::cout
+        << "Enter a vector of integers to search in (entering an empty line "
+           "ends input):\n";
+    auto vec = read_int_vector();
+    std::cout << "Needle? ";
+    int needle{};
+    std::cin >> needle;
+    auto it = binary_search(std::span(vec.begin(), vec.end()), needle);
+    if (it) {
+      std::cout << *it << " found\n";
+    } else {
+      std::cout << "not found\n";
+    }
   }
 }
 
