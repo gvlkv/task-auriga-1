@@ -4,11 +4,13 @@
 #include "algo4.hpp"
 #include "algo5.hpp"
 #include "algo6.hpp"
+#include "algo7-sort.hpp"
 #include <iostream>
 #include <ranges>
 #include <string_view>
 
 static void read_list(Node<std::string> **out_list);
+static std::vector<int> read_int_vector();
 
 int main(int argc, char **argv) {
   std::cout << std::boolalpha;
@@ -69,6 +71,15 @@ int main(int argc, char **argv) {
     std::string in;
     std::cin >> in;
     std::cout << check_brackets(in) << "\n";
+  } else if (std::string(argv[1]) == "algo7") {
+    std::cout << "Enter a vector of integers to sort (entering an empty line "
+                 "ends input):\n";
+    auto vec = read_int_vector();
+    vec = sort(vec);
+    for (int e : vec) {
+      std::cout << e << " ";
+    }
+    std::cout << "\n";
   }
 }
 
@@ -85,4 +96,16 @@ static void read_list(Node<std::string> **out_list) {
     list = new_node;
   }
   *out_list = list;
+}
+
+static std::vector<int> read_int_vector() {
+  std::string in;
+  std::vector<int> out;
+  for (;;) {
+    std::getline(std::cin, in);
+    if (in.empty())
+      break;
+    out.push_back(std::stoi(in));
+  }
+  return out;
 }
