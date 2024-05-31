@@ -1,0 +1,20 @@
+#!/usr/bin/env fish
+begin
+    begin
+        seq 10
+        seq 20 30
+    end | shuf
+    echo
+    echo 14
+end | ./build/task-auriga-1 algo11
+# output should be 10
+
+begin
+    begin
+        seq 10
+        seq 20 30
+    end | shuf
+    echo
+    echo 16
+end | ./build/task-auriga-1 algo11
+# output should be 20

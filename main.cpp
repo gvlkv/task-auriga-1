@@ -1,5 +1,6 @@
 #include "algo1.hpp"
 #include "algo10.hpp"
+#include "algo11.hpp"
 #include "algo2.hpp"
 #include "algo3.hpp"
 #include "algo4.hpp"
@@ -14,6 +15,7 @@
 
 static void read_list(Node<std::string> **out_list);
 static std::vector<int> read_int_vector();
+static TreeNode *read_int_tree();
 
 int main(int argc, char **argv) {
   std::cout << std::boolalpha;
@@ -105,6 +107,17 @@ int main(int argc, char **argv) {
   } else if (std::string(argv[1]) == "algo10") {
     auto vec = read_int_vector();
     std::cout << max_subsum(vec) << "\n";
+  } else if (std::string(argv[1]) == "algo11") {
+    TreeNode *tree = read_int_tree();
+    tree_print(tree);
+    int cmp{};
+    std::cin >> cmp;
+    TreeNode *found = find_closest(tree, cmp);
+    if (found) {
+      std::cout << "Closest tree value = " << found->value << "\n";
+    } else {
+      std::cout << "Not found\n";
+    }
   }
 }
 
@@ -133,4 +146,16 @@ static std::vector<int> read_int_vector() {
     out.push_back(std::stoi(in));
   }
   return out;
+}
+
+static TreeNode *read_int_tree() {
+  TreeNode *root = nullptr;
+  std::string in;
+  for (;;) {
+    std::getline(std::cin, in);
+    if (in.empty())
+      break;
+    tree_insert(&root, std::stoi(in));
+  }
+  return root;
 }
