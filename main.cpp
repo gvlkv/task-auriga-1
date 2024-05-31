@@ -1,4 +1,5 @@
 #include "algo1.hpp"
+#include "algo10.hpp"
 #include "algo2.hpp"
 #include "algo3.hpp"
 #include "algo4.hpp"
@@ -101,6 +102,9 @@ int main(int argc, char **argv) {
     std::cout << "Enter the number of ladder rungs: ";
     std::cin >> rungs;
     std::cout << "There is/are " << number_of_ways(rungs) << " way(s).\n";
+  } else if (std::string(argv[1]) == "algo10") {
+    auto vec = read_int_vector();
+    std::cout << max_subsum(vec) << "\n";
   }
 }
 
